@@ -56,10 +56,8 @@ object GetHero_ResponseAdapter : ResponseAdapter<GetHero.Data> {
     responseAdapterCache: ResponseAdapterCache,
     value: GetHero.Data
   ) {
-    writer.beginObject()
     writer.name("hero")
     Hero.obj(true).nullable().toResponse(writer, responseAdapterCache, value.hero)
-    writer.endObject()
   }
 
   object Hero : ResponseAdapter<GetHero.Data.Hero> {
@@ -96,12 +94,10 @@ object GetHero_ResponseAdapter : ResponseAdapter<GetHero.Data> {
       responseAdapterCache: ResponseAdapterCache,
       value: GetHero.Data.Hero
     ) {
-      writer.beginObject()
       writer.name("__typename")
       StringResponseAdapter.toResponse(writer, responseAdapterCache, value.__typename)
       if (value.asAsCharacter != null)
           AsCharacter.toResponse(writer, responseAdapterCache, value.asAsCharacter)
-      writer.endObject()
     }
 
     object AsCharacter : ResponseAdapter<GetHero.Data.Hero.AsCharacter> {
@@ -130,10 +126,8 @@ object GetHero_ResponseAdapter : ResponseAdapter<GetHero.Data> {
         responseAdapterCache: ResponseAdapterCache,
         value: GetHero.Data.Hero.AsCharacter
       ) {
-        writer.beginObject()
         writer.name("__typename")
         StringResponseAdapter.toResponse(writer, responseAdapterCache, value.__typename)
-        writer.endObject()
       }
     }
   }
